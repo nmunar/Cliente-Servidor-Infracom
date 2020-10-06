@@ -12,7 +12,6 @@ print_lock = threading.Lock()
 
 # thread function
 def threaded(c):
-    print("entre")
     while True:
 
         # data received from client
@@ -37,7 +36,7 @@ def threaded(c):
         c.sendall(arch.encode('ANSI'))
         c.sendall(m.hexdigest().encode("utf-8"))
         # connection closed
-    c.close()
+        c.close()
 
 
 def Main():
