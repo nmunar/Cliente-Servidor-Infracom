@@ -43,6 +43,7 @@ def Main():
         print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
 
+
         ans = input('\nDo you want to continue(y/n) :') 
         if ans == 'y': 
             continue

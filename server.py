@@ -33,8 +33,13 @@ def threaded(c):
         h = str(m.hexdigest())
         print("Digest enviado: ", m.hexdigest())
         # send back reversed string to client
-        c.sendall(arch)#.encode('dbcs'))
-        c.sendall(m.hexdigest().encode("utf-8"))
+        c.send(arch)#.encode('dbcs'))
+        c.send(m.hexdigest().encode("utf-8"))
+
+        # lock released on exit
+        print_lock.release()
+        break
+
     # connection closed
     c.close()
 
