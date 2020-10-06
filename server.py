@@ -16,7 +16,6 @@ def threaded(c):
     while True:
 
         # data received from client
-        tiempo_inicial = time()
         data = c.recv(1024)
         data = open("./video.mp4", encoding="ANSI")
         arch = data.read()
@@ -37,9 +36,6 @@ def threaded(c):
         # send back reversed string to client
         c.sendall(arch.encode('ANSI'))
         c.sendall(m.hexdigest().encode("utf-8"))
-        tiempo_final = time()
-        tiempo_ejecucion = tiempo_final - tiempo_inicial
-        print("tiempo de operación: "+ tiempo_ejecucion)
         # connection closed
         c.close()
 

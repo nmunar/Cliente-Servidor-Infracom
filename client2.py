@@ -22,6 +22,7 @@ def Main():
     while True: 
   
         # message sent to server 
+        tiempo_inicial = time()
         s.send(message.encode('utf-8')) 
   
         # message received from server 
@@ -35,6 +36,9 @@ def Main():
         m = hashlib.sha256()
         m.update(arch.encode('ANSI'))
         h = str(m.hexdigest())
+        tiempo_final = time()
+        tiempo_ejecucion = tiempo_final - tiempo_inicial
+        print("tiempo de operación: "+ str(tiempo_ejecucion))
         print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
         ans = input('\nDo you want to continue(y/n) :') 
