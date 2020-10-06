@@ -16,7 +16,7 @@ def threaded(c):
 
         # data received from client
         data = c.recv(1024)
-        data = open("./video.mp4", encoding="ANSI")
+        data = open("./video.mp4", "rb")#, encoding="dbcs")
         arch = data.read()
         if not data:
             print('File not found')
@@ -29,14 +29,14 @@ def threaded(c):
         #data = data[::-1]
         print("Envio de información")
         m = hashlib.sha256()
-        m.update(arch.encode('ANSI'))
+        m.update(arch)#.encode('dbcs'))
         h = str(m.hexdigest())
         print("Digest enviado: ", m.hexdigest())
         # send back reversed string to client
-        c.sendall(arch.encode('ANSI'))
+        c.sendall(arch)#.encode('dbcs'))
         c.sendall(m.hexdigest().encode("utf-8"))
-        # connection closed
-        c.close()
+    # connection closed
+    c.close()
 
 
 def Main():

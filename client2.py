@@ -30,18 +30,19 @@ def Main():
         data = s.recv(size) 
         hashh = s.recv(size)
         print("Hash recibido: " + hashh.decode("utf-8"))
-        arch = data.decode('ANSI')
+        arch = data#.decode('dbcs')
         # print the received message 
         # here it would be a reverse of sent message 
         print('Received file from the server :')#,str(data.decode('ANSI'))) 
         m = hashlib.sha256()
-        m.update(arch.encode('ANSI'))
+        m.update(arch)#.encode('dbcs'))
         h = str(m.hexdigest())
         tiempo_final = time()
         tiempo_ejecucion = tiempo_final - tiempo_inicial
         print("tiempo de operación: "+ str(tiempo_ejecucion))
         print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
+
         ans = input('\nDo you want to continue(y/n) :') 
         if ans == 'y': 
             continue
