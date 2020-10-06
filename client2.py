@@ -2,6 +2,7 @@
 import socket 
 
 import hashlib
+from time import time
 
  
 size = int(float(3.1*(10**8))) 

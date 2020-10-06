@@ -4,7 +4,6 @@ import hashlib
 
 
 # import thread module
-from time import time
 from _thread import *
 import threading
 
