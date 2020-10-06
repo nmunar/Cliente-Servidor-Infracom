@@ -1,5 +1,7 @@
 # import socket programming library
 import socket
+import hashlib
+
 
 # import thread module
 from _thread import *
@@ -27,9 +29,13 @@ def threaded(c):
         # reverse the given string from client
         #data = data[::-1]
         print("Envio de información")
+        m = hashlib.sha256()
+        m.update(arch.encode('ANSI'))
+        h = str(m.hexdigest())
+        print("Digest enviado: ", m.hexdigest())
         # send back reversed string to client
         c.sendall(arch.encode('ANSI'))
-
+        c.sendall(m.hexdigest().encode("utf-8"))
         # connection closed
     c.close()
 

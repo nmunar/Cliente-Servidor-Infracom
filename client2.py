@@ -1,5 +1,8 @@
 # Import socket module 
 import socket 
+
+import hashlib
+
  
 size = int(float(3.1*(10**8))) 
 
@@ -23,11 +26,16 @@ def Main():
   
         # message received from server 
         data = s.recv(size) 
-  
+        hashh = s.recv(size)
+        print("Hash recibido: " + hashh.decode("utf-8"))
+        arch = data.decode('ANSI')
         # print the received message 
         # here it would be a reverse of sent message 
         print('Received file from the server :')#,str(data.decode('ANSI'))) 
-  
+        m = hashlib.sha256()
+        m.update(arch.encode('ANSI'))
+        h = str(m.hexdigest())
+        print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
         ans = input('\nDo you want to continue(y/n) :') 
         if ans == 'y': 
