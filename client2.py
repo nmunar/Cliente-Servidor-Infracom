@@ -9,7 +9,7 @@ size = int(float(3.1*(10**8)))
 
 def Main(): 
     # local host IP '127.0.0.1' 
-    host = '127.0.0.1'
+    host = '3.88.163.203'
     # Define the port on which you want to connect 
     port = 55000
   
