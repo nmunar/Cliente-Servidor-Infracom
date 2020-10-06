@@ -27,7 +27,7 @@ def threaded(c):
 
         # reverse the given string from client
         #data = data[::-1]
-        print("Envio de información")
+        print("Envio de informacion")
         m = hashlib.sha256()
         m.update(arch)#.encode('dbcs'))
         h = str(m.hexdigest())
@@ -40,7 +40,7 @@ def threaded(c):
 
 
 def Main():
-    host = ""
+    host = socket.gethostname()
 
     # reverse a port on your computer
     # in our case it is 12345 but it
