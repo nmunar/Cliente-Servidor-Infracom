@@ -250,3 +250,9 @@
 2020-10-06 22:37:45,222 : INFO : Recibio datos: video ./video2.mp4 de tamano 234.34 MB
 2020-10-06 22:37:45,222 : INFO : Recibio su hash: ed3d32790a767cc3e3bb7e6998620b33ce45d6873a9ccb4834ec5290a20b6239
 2020-10-06 22:37:46,635 : INFO : Tiempo que se tardo en enviar los archivos: 24.21 ms
+2020-10-06 23:13:51,341 : INFO : Recibio datos: video ./video2.mp4 de tamano 234.34 MB
+2020-10-06 23:13:51,341 : INFO : Recibio su hash: 
+2020-10-06 23:13:51,343 : INFO : Tiempo que se tardo en enviar los archivos: 0.32 ms
+2020-10-06 23:13:55,837 : INFO : Recibio datos: video ./video2.mp4 de tamano 234.34 MB
+2020-10-06 23:13:55,837 : INFO : Recibio su hash: 
+2020-10-06 23:13:55,842 : INFO : Tiempo que se tardo en enviar los archivos: 0.32 ms
