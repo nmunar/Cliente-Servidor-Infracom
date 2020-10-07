@@ -256,3 +256,6 @@
 2020-10-06 23:13:55,837 : INFO : Recibio datos: video ./video2.mp4 de tamano 234.34 MB
 2020-10-06 23:13:55,837 : INFO : Recibio su hash: 
 2020-10-06 23:13:55,842 : INFO : Tiempo que se tardo en enviar los archivos: 0.32 ms
+2020-10-06 23:17:27,032 : INFO : Recibio datos: video ./video2.mp4 de tamano 234.34 MB
+2020-10-06 23:17:27,032 : INFO : Recibio su hash: 
+2020-10-06 23:17:27,033 : INFO : Tiempo que se tardo en enviar los archivos: 0.28 ms

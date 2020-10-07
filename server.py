@@ -16,7 +16,7 @@ print('Archivo Log en ', fichero_log)
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s : %(levelname)s : %(message)s',
                     filename=fichero_log,
-                    filemode='a', ) 
+                    filemode='a') 
 
 print_lock = threading.Lock()
 
@@ -94,6 +94,7 @@ def Main():
         print_lock.acquire()
 
         print('Connected to :', addr[0], ':', addr[1])
+        
         logging.info('Connected to : ,'+ str(addr[0]) +' , : , ' + str(addr[1]))
         # Start a new thread and return its identifier
         start_new_thread(threaded, (c,video))
