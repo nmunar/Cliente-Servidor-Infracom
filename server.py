@@ -16,6 +16,7 @@ def threaded(c):
 
         # data received from client
         data = c.recv(1024)
+
         data = open("./video.mp4", "rb")#, encoding="dbcs")
         arch = data.read()
         if not data:

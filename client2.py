@@ -3,8 +3,23 @@ import socket
 
 import hashlib
 from time import time
+from pathlib import Path
 
  
+import os, platform, logging
+
+if platform.platform().startswith('Cliente-Servidor-Infracom'):
+    fichero_log = os.path.join('archivo.log')
+else:
+    fichero_log = os.path.join('archivo.log')
+
+print('Archivo Log en ', fichero_log)
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s : %(levelname)s : %(message)s',
+                    filename=fichero_log,
+                    filemode='a', ) 
+
+
 size = int(float(3.1*(10**8))) 
 
 def Main(): 
@@ -29,8 +44,12 @@ def Main():
         # message received from server 
         data = s.recv(size) 
         hashh = s.recv(size)
+        logging.info("Recibio datos: video 1"+ " de tamano " + str(round(Path('./video.mp4').stat().st_size/(1024*1024), 2))+" MB")
+        logging.info("Recibio su hash: "+ str(hashh) )
         print("Hash recibido: " + hashh.decode("utf-8"))
-        arch = data#.decode('dbcs')
+        arch = data
+        
+        #.decode('dbcs')
         # print the received message 
         # here it would be a reverse of sent message 
         print('Received file from the server :')#,str(data.decode('ANSI'))) 
@@ -39,6 +58,8 @@ def Main():
         h = str(m.hexdigest())
         tiempo_final = time()
         tiempo_ejecucion = tiempo_final - tiempo_inicial
+        logging.info("Tiempo que se tardo en enviar los archivos: "+ str(round(tiempo_ejecucion, 2))+ " ms")
+        
         print("tiempo de operación: "+ str(tiempo_ejecucion))
         print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
@@ -46,6 +67,7 @@ def Main():
 
         ans = input('\nDo you want to continue(y/n) :') 
         if ans == 'y': 
+
             continue
         else: 
             break
