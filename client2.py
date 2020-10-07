@@ -25,7 +25,7 @@ size = int(float(3.1*(10**8)))
 def Main():
 
     # local host IP '127.0.0.1', cloud: '3.88.163.203'
-    host = '3.88.163.203'
+    host = '127.0.0.1'
     # Define the port on which you want to connect 
     port = 55000
   
@@ -47,8 +47,6 @@ def Main():
         resp = s.recv(1024).decode("utf-8")
         print("video: " + resp)
         video = resp
-        #video = "./video.mp4" if resp is "1" else "./video2.mp4"
-        #s.send(resp.encode('utf-8'))
   
         # message received from server 
         data = s.recv(size) 
@@ -58,12 +56,11 @@ def Main():
         print("Hash recibido: " + str(hashh.decode('utf-8')))
         arch = data
 
-        #.decode('dbcs')
         # print the received message 
         # here it would be a reverse of sent message 
         print('Received file from the server :'+ resp + "de tamaño" + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")#,str(data.decode('ANSI'))) 
         m = hashlib.sha256()
-        m.update(arch)#.encode('dbcs'))
+        m.update(arch)
         h = str(m.hexdigest())
         tiempo_final = time()
         tiempo_ejecucion = tiempo_final - tiempo_inicial

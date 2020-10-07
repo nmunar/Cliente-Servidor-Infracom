@@ -35,7 +35,7 @@ def threaded(c, pvideo):
         c.send(options.encode("utf-8"))
         video = pvideo
 
-        data = open(video, "rb")#, encoding="dbcs")
+        data = open(video, "rb")
         arch = data.read()
         if not data:
             print('File not found')
@@ -45,7 +45,6 @@ def threaded(c, pvideo):
             break
 
         # reverse the given string from client
-        #data = data[::-1]
         print("Envio de informacion")
         m = hashlib.sha256()
         m.update(arch)#.encode('dbcs'))
@@ -64,6 +63,7 @@ def threaded(c, pvideo):
 
 
 def Main():
+    #To prove in a VM delete the # 
     host = ""#socket.gethostname()
 
     # reverse a port on your computer
