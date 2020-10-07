@@ -1,14 +1,22 @@
 # import socket programming library
 import socket
 import hashlib
-
-
 # import thread module
 from _thread import *
 import threading
-
 import os, platform, logging
 
+    
+if platform.platform().startswith('Cliente-Servidor-Infracom'):
+        fichero_log = os.path.join('archivoServidor.log')
+else:
+        fichero_log = os.path.join('archivoServidor.log')
+
+print('Archivo Log en ', fichero_log)
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s : %(levelname)s : %(message)s',
+                    filename=fichero_log,
+                    filemode='a', ) 
 
 print_lock = threading.Lock()
 
@@ -56,18 +64,6 @@ def threaded(c, pvideo):
 
 
 def Main():
-
-    
-if platform.platform().startswith('Cliente-Servidor-Infracom'):
-    fichero_log = os.path.join('archivoServidor.log')
-else:
-    fichero_log = os.path.join('archivoServidor.log')
-
-print('Archivo Log en ', fichero_log)
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s : %(levelname)s : %(message)s',
-                    filename=fichero_log,
-                    filemode='a', ) 
     host = socket.gethostname()
 
     # reverse a port on your computer
@@ -97,9 +93,8 @@ logging.basicConfig(level=logging.DEBUG,
         # lock acquired by client
         print_lock.acquire()
 
-        logging.info('Connected to :', addr[0], ':', addr[1])
         print('Connected to :', addr[0], ':', addr[1])
-
+        logging.info('Connected to : ,'+ str(addr[0]) +' , : , ' + str(addr[1]))
         # Start a new thread and return its identifier
         start_new_thread(threaded, (c,video))
     s.close()
