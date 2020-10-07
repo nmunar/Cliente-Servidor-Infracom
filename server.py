@@ -20,9 +20,12 @@ def threaded(c):
         print("Cliente "+ str(data))
         options = "Cual archivo desea descargar \n 1. Video 1 124.04 MB \n 2. Video 2 239.96 MB"
         c.send(options.encode("utf-8"))
-        opcion = c.recv(1024)
-        video = "./video.mp4" if opcion==1 else "./video2.mp4"
-        
+        opcion = c.recv(1024).decode('utf-8')
+        if opcion is '1':
+            video = "./video.mp4"
+        else:
+            video = "./video2.mp4"
+        #video = "./video.mp4" if opcion is "1" else "./video2.mp4"
 
         data = open(video, "rb")#, encoding="dbcs")
         arch = data.read()

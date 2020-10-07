@@ -44,14 +44,19 @@ def Main():
 
         print(s.recv(1024))
 
-        resp = input("Escribir la opcion que desee (1 o 2) ");
-        video = "./video.mp4" if resp==1 else "./video2.mp4"
+        resp = input("Escribir la opcion que desee (1 o 2) ")
+        print(resp)
+        if resp is '1':
+            video = "./video.mp4"
+        else:
+            video = "./video2.mp4"
+        #video = "./video.mp4" if resp is "1" else "./video2.mp4"
         s.send(resp.encode('utf-8'))
   
         # message received from server 
         data = s.recv(size) 
         hashh = s.recv(size)
-        logging.info("Recibio datos: video "+"resp"+ " de tamano " + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")
+        logging.info("Recibio datos: video "+resp+ " de tamano " + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")
         logging.info("Recibio su hash: "+ str(hashh) )
         print("Hash recibido: " + hashh.decode("utf-8"))
         arch = data
