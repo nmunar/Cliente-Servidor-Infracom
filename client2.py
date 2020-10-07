@@ -42,11 +42,11 @@ def Main():
         s.send(message.encode('utf-8')) 
         print("Cliente "+ message)
 
-        print(s.recv())
+        print(s.recv(1024))
 
         resp = input("Escribir la opcion que desee (1 o 2) ");
 
-        s.send("resp")
+        s.send(resp.encode('utf-8'))
   
         # message received from server 
         data = s.recv(size) 

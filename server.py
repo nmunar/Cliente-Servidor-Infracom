@@ -17,9 +17,9 @@ def threaded(c):
         # data received from client
         data = c.recv(1024)
 
-        print("Cliente "+ data)
-
-        c.send("Cual archivo desea descargar \n 1. Video 1 124.04 MB \n 2. Video 2 239.96 MB")
+        print("Cliente "+ str(data))
+        options = "Cual archivo desea descargar \n 1. Video 1 124.04 MB \n 2. Video 2 239.96 MB"
+        c.send(options.encode("utf-8"))
         opcion = c.recv(1024)
         video = "./video.mp4" if opcion==1 else "./video2.mp4"
         
@@ -53,7 +53,7 @@ def threaded(c):
 
 
 def Main():
-    host = socket.gethostname()
+    host = ""#socket.gethostname()
 
     # reverse a port on your computer
     # in our case it is 12345 but it
