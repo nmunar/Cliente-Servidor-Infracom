@@ -1,18 +1,16 @@
 # import socket programming library
 import socket
 import hashlib
-
-
 # import thread module
 from _thread import *
 import threading
-
 import os, platform, logging
 
+    
 if platform.platform().startswith('Cliente-Servidor-Infracom'):
-    fichero_log = os.path.join('archivoServidor.log')
+        fichero_log = os.path.join('archivoServidor.log')
 else:
-    fichero_log = os.path.join('archivoServidor.log')
+        fichero_log = os.path.join('archivoServidor.log')
 
 print('Archivo Log en ', fichero_log)
 logging.basicConfig(level=logging.DEBUG,
@@ -29,6 +27,8 @@ def threaded(c, pvideo):
 
         # data received from client
         data = c.recv(1024)
+
+        logging.info("El cliente está en estado: " + str(data.decode("utf-8")))
 
         print("Cliente "+ str(data.decode("utf-8")))
         options = pvideo
@@ -92,8 +92,9 @@ def Main():
 
         # lock acquired by client
         print_lock.acquire()
-        print('Connected to :', addr[0], ':', addr[1])
 
+        print('Connected to :', addr[0], ':', addr[1])
+        logging.info('Connected to : ,'+ str(addr[0]) +' , : , ' + str(addr[1]))
         # Start a new thread and return its identifier
         start_new_thread(threaded, (c,video))
     s.close()

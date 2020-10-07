@@ -55,13 +55,13 @@ def Main():
         hashh = s.recv(size)
         logging.info("Recibio datos: video "+resp+ " de tamano " + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")
         logging.info("Recibio su hash: "+ str(hashh.decode('utf-8')) )
-        print("Hash recibido: " + hashh.decode("utf-8"))
+        print("Hash recibido: " + str(hashh.decode('utf-8')))
         arch = data
 
         #.decode('dbcs')
         # print the received message 
         # here it would be a reverse of sent message 
-        print('Received file from the server :')#,str(data.decode('ANSI'))) 
+        print('Received file from the server :'+ resp + "de tamaño" + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")#,str(data.decode('ANSI'))) 
         m = hashlib.sha256()
         m.update(arch)#.encode('dbcs'))
         h = str(m.hexdigest())
@@ -73,13 +73,7 @@ def Main():
         print("Digest calculado: ", m.hexdigest())
         # ask the client whether he wants to continue 
 
-
-        ans = input('\nDo you want to continue(y/n) :') 
-        if ans == 'y': 
-
-            continue
-        else: 
-            break
+        break
     # close the connection 
     s.close() 
   
