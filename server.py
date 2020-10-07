@@ -7,6 +7,19 @@ import hashlib
 from _thread import *
 import threading
 
+import os, platform, logging
+
+if platform.platform().startswith('Cliente-Servidor-Infracom'):
+    fichero_log = os.path.join('archivoServidor.log')
+else:
+    fichero_log = os.path.join('archivoServidor.log')
+
+print('Archivo Log en ', fichero_log)
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s : %(levelname)s : %(message)s',
+                    filename=fichero_log,
+                    filemode='a', ) 
+
 print_lock = threading.Lock()
 
 
