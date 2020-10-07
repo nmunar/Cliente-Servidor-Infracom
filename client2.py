@@ -9,9 +9,9 @@ from pathlib import Path
 import os, platform, logging
 
 if platform.platform().startswith('Cliente-Servidor-Infracom'):
-    fichero_log = os.path.join('archivo.log')
+    fichero_log = os.path.join('archivoCliente.log')
 else:
-    fichero_log = os.path.join('archivo.log')
+    fichero_log = os.path.join('archivoCliente.log')
 
 print('Archivo Log en ', fichero_log)
 logging.basicConfig(level=logging.DEBUG,
@@ -24,7 +24,7 @@ size = int(float(3.1*(10**8)))
 
 def Main(): 
     # local host IP '127.0.0.1' 
-    host = '127.0.0.1'
+    host = '3.88.163.203'
     # Define the port on which you want to connect 
     port = 55000
   
