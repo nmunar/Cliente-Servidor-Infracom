@@ -64,7 +64,7 @@ def Main():
     print("socket binded to port", port)
 
     # put the socket into listening mode
-    s.listen(1)
+    s.listen(5)
     print("socket is listening")
 
     # a forever loop until client wants to exit

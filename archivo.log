@@ -7,3 +7,6 @@
 2020-10-06 20:08:36,106 : INFO : Recibio datos: video 1 de tamano 121.1 MB
 2020-10-06 20:08:36,106 : INFO : Recibio su hash: b'ed3d32790a767cc3e3bb7e6998620b33ce45d6873a9ccb4834ec5290a20b6239'
 2020-10-06 20:08:37,503 : INFO : Tiempo que se tardo en enviar los archivos: 4.88 ms
+2020-10-06 20:37:02,355 : INFO : Recibio datos: video 1 de tamano 121.1 MB
+2020-10-06 20:37:02,355 : INFO : Recibio su hash: b'ed3d32790a767cc3e3bb7e6998620b33ce45d6873a9ccb4834ec5290a20b6239'
+2020-10-06 20:37:03,745 : INFO : Tiempo que se tardo en enviar los archivos: 5.53 ms
