@@ -11,21 +11,16 @@ print_lock = threading.Lock()
 
 
 # thread function
-def threaded(c):
+def threaded(c, pvideo):
     while True:
 
         # data received from client
         data = c.recv(1024)
 
-        print("Cliente "+ str(data))
-        options = "Cual archivo desea descargar \n 1. Video 1 124.04 MB \n 2. Video 2 239.96 MB"
+        print("Cliente "+ str(data.decode("utf-8")))
+        options = pvideo
         c.send(options.encode("utf-8"))
-        opcion = c.recv(1024).decode('utf-8')
-        if opcion is '1':
-            video = "./video.mp4"
-        else:
-            video = "./video2.mp4"
-        #video = "./video.mp4" if opcion is "1" else "./video2.mp4"
+        video = pvideo
 
         data = open(video, "rb")#, encoding="dbcs")
         arch = data.read()
@@ -56,7 +51,7 @@ def threaded(c):
 
 
 def Main():
-    host = ""#socket.gethostname()
+    host = socket.gethostname()
 
     # reverse a port on your computer
     # in our case it is 12345 but it
@@ -64,11 +59,18 @@ def Main():
     port = 55000
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host, port))
-    print("socket binded to port", port)
+    print("Server binded to port", port)
 
+    resp = input("Ingrese la cantidad de clientes en simultaneo ")
     # put the socket into listening mode
-    s.listen(5)
-    print("socket is listening")
+    s.listen(int(resp))
+    print("Server is listening")
+    resp = input("Ingrese que archivo desea que se envie a los clientes (1 o 2) ")
+    print(resp)
+    if resp == '1':
+        video = "./video.mp4"
+    else:
+        video = "./video2.mp4"
 
     # a forever loop until client wants to exit
     while True:
@@ -80,7 +82,7 @@ def Main():
         print('Connected to :', addr[0], ':', addr[1])
 
         # Start a new thread and return its identifier
-        start_new_thread(threaded, (c,))
+        start_new_thread(threaded, (c,video))
     s.close()
 
 

@@ -23,8 +23,8 @@ logging.basicConfig(level=logging.DEBUG,
 size = int(float(3.1*(10**8))) 
 
 def Main(): 
-    # local host IP '127.0.0.1' 
-    host = '127.0.0.1'
+    # local host IP '127.0.0.1', cloud: '3.88.163.203'
+    host = '3.88.163.203'
     # Define the port on which you want to connect 
     port = 55000
   
@@ -42,16 +42,12 @@ def Main():
         s.send(message.encode('utf-8')) 
         print("Cliente "+ message)
 
-        print(s.recv(1024))
 
-        resp = input("Escribir la opcion que desee (1 o 2) ")
-        print(resp)
-        if resp is '1':
-            video = "./video.mp4"
-        else:
-            video = "./video2.mp4"
+        resp = s.recv(1024).decode("utf-8")
+        print("video: " + resp)
+        video = resp
         #video = "./video.mp4" if resp is "1" else "./video2.mp4"
-        s.send(resp.encode('utf-8'))
+        #s.send(resp.encode('utf-8'))
   
         # message received from server 
         data = s.recv(size) 
