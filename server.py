@@ -64,7 +64,7 @@ def threaded(c, pvideo):
 
 
 def Main():
-    host = socket.gethostname()
+    host = ""#socket.gethostname()
 
     # reverse a port on your computer
     # in our case it is 12345 but it
