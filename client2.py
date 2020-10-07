@@ -34,12 +34,19 @@ def Main():
     s.connect((host,port)) 
   
     # message you send to server 
-    message = "prueba"
+    message = "Preparado"
     while True: 
   
         # message sent to server 
         tiempo_inicial = time()
         s.send(message.encode('utf-8')) 
+        print("Cliente "+ message)
+
+        print(s.recv())
+
+        resp = input("Escribir la opcion que desee (1 o 2) ");
+
+        s.send("resp")
   
         # message received from server 
         data = s.recv(size) 
@@ -48,7 +55,7 @@ def Main():
         logging.info("Recibio su hash: "+ str(hashh) )
         print("Hash recibido: " + hashh.decode("utf-8"))
         arch = data
-        
+
         #.decode('dbcs')
         # print the received message 
         # here it would be a reverse of sent message 

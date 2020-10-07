@@ -17,6 +17,12 @@ def threaded(c):
         # data received from client
         data = c.recv(1024)
 
+        print("Cliente "+ data)
+
+        c.send("Cual archivo desea descargar \n 1. Video 1 124.04 MB \n 2. Video 2 239.96 MB")
+
+        
+
         data = open("./video.mp4", "rb")#, encoding="dbcs")
         arch = data.read()
         if not data:
