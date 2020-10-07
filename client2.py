@@ -54,7 +54,7 @@ def Main():
         data = s.recv(size) 
         hashh = s.recv(size)
         logging.info("Recibio datos: video "+resp+ " de tamano " + str(round(Path(video).stat().st_size/(1024*1024), 2))+" MB")
-        logging.info("Recibio su hash: "+ str(hashh) )
+        logging.info("Recibio su hash: "+ str(hashh.decode('utf-8')) )
         print("Hash recibido: " + hashh.decode("utf-8"))
         arch = data
 
